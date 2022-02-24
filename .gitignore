@@ -4,3 +4,6 @@
 
 #Ignore Data
 Data/
+
+#Ignore py files
+*__pycache__*
