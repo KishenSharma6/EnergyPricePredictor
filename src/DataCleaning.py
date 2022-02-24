@@ -52,8 +52,8 @@ def set_time_index(dataframe, time_column):
     dataframe.set_index(time_column)
     return dataframe
 
-def kelvin_to_celsius(dataframe, temp_cols):
-    """Convert cols containing kelvin temp to celsius
+def kelvin_to_fahrenheit(dataframe, temp_cols):
+    """Convert cols containing kelvin temp to freedom units
 
     Args:
         dataframe (pd.Dataframe): pandas dataframe containing data you would like cleaned
@@ -61,6 +61,6 @@ def kelvin_to_celsius(dataframe, temp_cols):
         column(s) you would like transformation applied to
     """
     for c in temp_cols:
-        dataframe[c]= dataframe[c].apply(lambda x: x- 273.15)
+        dataframe[c]= dataframe[c].apply(lambda x: (1.8* (x- 273)) + 32)
     
     return dataframe
