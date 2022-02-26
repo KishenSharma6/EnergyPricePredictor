@@ -49,7 +49,7 @@ def set_time_index(dataframe, time_column):
     """
     #Clean time col and set as index
     dataframe[time_column]= pd.to_datetime(dataframe[time_column].apply(lambda x: re.sub("[+].*", '', x )))
-    dataframe.set_index(time_column)
+    dataframe.set_index(time_column, inplace= True)
     return dataframe
 
 def kelvin_to_fahrenheit(dataframe, temp_cols):
