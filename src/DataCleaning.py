@@ -21,7 +21,7 @@ def clean_columns(dataframe, cols = None):
         pass
     else:
         assert all(type(c) == str for c in cols), "Error, cols can only contain strings"
-        dataframe= dataframe.drop(columns= [cols], axis= 1)
+        dataframe= dataframe.drop(columns= cols, axis= 1)
     
     #Drop cols containing null
     dataframe= dataframe.dropna(how= "all", axis= 1)
@@ -63,4 +63,22 @@ def kelvin_to_fahrenheit(dataframe, temp_cols):
     for c in temp_cols:
         dataframe[c]= dataframe[c].apply(lambda x: (1.8* (x- 273)) + 32)
     
+    return dataframe
+
+def input_mean(dataframe):
+    """Input column mean values for rows containing missing data
+
+    Args:
+        dataframe (_type_): _description_
+    """
+    dataframe= dataframe.fillna(dataframe.mean())
+    return dataframe
+
+def input_median(dataframe):
+    """Input column median values for rows containing missing data
+
+    Args:
+        dataframe (_type_): _description_
+    """
+    dataframe= dataframe.fillna(dataframe.mean())
     return dataframe
