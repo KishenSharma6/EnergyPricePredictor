@@ -7,6 +7,7 @@ def clean_columns(dataframe, cols = None):
     """Takes pd.Dataframe containing raw data and performs the following opterations:
         - Drops cols specified by cols 
         - Drops columns containing only null or non-unique values
+        - Remove cols containing forecasts
     
     Functions returns cleaned energy dataframe
     Args:
@@ -27,9 +28,12 @@ def clean_columns(dataframe, cols = None):
     dataframe= dataframe.dropna(how= "all", axis= 1)
 
     #Drop cols containing single unique value
+    #Remove Forecast cols(other than TSO Predictions)
     to_drop= []
     for c in list(dataframe.columns):
         if dataframe[c].nunique() == 1:
+            to_drop.append(c)
+        if "forecast" in c:
             to_drop.append(c)
     dataframe= dataframe.drop(columns = to_drop, axis= 1)
 
