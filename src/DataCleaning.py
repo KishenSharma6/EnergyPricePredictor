@@ -86,3 +86,7 @@ def input_median(dataframe):
     """
     dataframe= dataframe.fillna(dataframe.mean())
     return dataframe
+
+def write_to_csv(dataframe, path, filename):
+    dataframe.to_csv(path + filename)
+    print("File written to %s sucessfully" % (path))
