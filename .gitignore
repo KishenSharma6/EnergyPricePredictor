@@ -10,3 +10,6 @@ Data/
 
 #Ignore my ToDo.txt
 ToDo.txt
+
+#Ignore visualizations
+Visualizations/*
