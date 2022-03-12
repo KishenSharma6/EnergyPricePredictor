@@ -4,3 +4,12 @@
 
 #Ignore Data
 Data/
+
+#Ignore py files
+*__pycache__*
+
+#Ignore my ToDo.txt
+ToDo.txt
+
+#Ignore visualizations
+Visualizations/*
